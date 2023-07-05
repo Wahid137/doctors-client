@@ -7,3 +7,7 @@ module.exports = {
   plugins: [require("daisyui")],
 }
 
+module.exports = {
+  //...
+
+}
