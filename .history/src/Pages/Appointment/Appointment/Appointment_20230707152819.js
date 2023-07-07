@@ -13,6 +13,7 @@ const Appointment = () => {
             ></AppointmentBanner>
             <AvailableAppointment
                 selectedDate={selectedDate}
+
             ></AvailableAppointment>
 
         </div>
