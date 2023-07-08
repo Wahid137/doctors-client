@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
-import { toast } from 'react-hot-toast';
 
 const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
     const { name: treatmentName, slots } = treatment;
@@ -32,20 +31,7 @@ const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
             },
             body: JSON.stringify(booking)
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success("Booking is done!")
-                    refetch()
-                    form.reset()
-                }
-                else {
-                    //this error message is from server if same email, same date, same appointment
-                    toast.error(data.message)
-                }
-                setTreatment(null)
-
-            })
+        setTreatment(null)
 
     }
 

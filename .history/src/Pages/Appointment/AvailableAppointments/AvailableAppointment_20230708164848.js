@@ -14,7 +14,6 @@ const AvailableAppointment = ({ selectedDate }) => {
         queryFn: () => fetch(`http://localhost:5000/appointments?date=${date}`)
             .then(res => res.json())
     })
-
     if (isLoading) {
         return <Loading></Loading>
     }

@@ -37,14 +37,8 @@ const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
                 if (data.acknowledged) {
                     toast.success("Booking is done!")
                     refetch()
-                    form.reset()
+                    setTreatment(null)
                 }
-                else {
-                    //this error message is from server if same email, same date, same appointment
-                    toast.error(data.message)
-                }
-                setTreatment(null)
-
             })
 
     }

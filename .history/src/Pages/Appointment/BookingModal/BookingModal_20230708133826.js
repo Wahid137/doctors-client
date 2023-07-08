@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
-import { toast } from 'react-hot-toast';
 
 const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
     const { name: treatmentName, slots } = treatment;
@@ -17,35 +16,15 @@ const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
         const phone = form.phone.value;
 
         const booking = {
-            treatment: treatmentName,
             appointmentDate: date,
-            slot,
+            treatment: treatmentName,
             patient: name,
+            slot,
             email,
             phone
         }
         console.log(booking)
-        fetch('http://localhost:5000/bookings', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(booking)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success("Booking is done!")
-                    refetch()
-                    form.reset()
-                }
-                else {
-                    //this error message is from server if same email, same date, same appointment
-                    toast.error(data.message)
-                }
-                setTreatment(null)
-
-            })
+        setTreatment(null)
 
     }
 

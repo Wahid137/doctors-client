@@ -7,7 +7,7 @@ import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('');
     const navigate = useNavigate();
 
@@ -19,15 +19,6 @@ const SignUp = () => {
                 console.log(user)
                 toast.success('User Created Successfully.')
                 reset();
-                const userInfo = {
-                    displayName: data.name
-                }
-                updateUser(userInfo)
-                    .then(() => {
-                        navigate('/');
-                    })
-                    .catch(error => console.log(error))
-
             })
             .catch(error => {
                 console.log(error)

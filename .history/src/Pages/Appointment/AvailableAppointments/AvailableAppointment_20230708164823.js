@@ -11,10 +11,9 @@ const AvailableAppointment = ({ selectedDate }) => {
 
     const { data: appointmentOptions = [], refetch, isLoading } = useQuery({
         queryKey: ['appointmentOptions', date],
-        queryFn: () => fetch(`http://localhost:5000/appointments?date=${date}`)
+        queryFn: () => fetch('http://localhost:5000/appointments')
             .then(res => res.json())
     })
-
     if (isLoading) {
         return <Loading></Loading>
     }

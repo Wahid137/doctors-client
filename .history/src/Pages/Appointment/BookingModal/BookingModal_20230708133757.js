@@ -1,7 +1,6 @@
 import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider';
-import { toast } from 'react-hot-toast';
 
 const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
     const { name: treatmentName, slots } = treatment;
@@ -17,35 +16,15 @@ const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
         const phone = form.phone.value;
 
         const booking = {
-            treatment: treatmentName,
             appointmentDate: date,
-            slot,
+            treatment: treatmentName,
             patient: name,
+            slot,
             email,
             phone
         }
         console.log(booking)
-        fetch('http://localhost:5000/bookings', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(booking)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success("Booking is done!")
-                    refetch()
-                    form.reset()
-                }
-                else {
-                    //this error message is from server if same email, same date, same appointment
-                    toast.error(data.message)
-                }
-                setTreatment(null)
-
-            })
+        setTreatment(null)
 
     }
 
@@ -69,8 +48,8 @@ const BookingModal = ({ treatment, setTreatment, refetch, selectedDate }) => {
                             }
 
                         </select>
-                        <input name="name" type="text" defaultValue={user?.displayName} disabled placeholder="Your Name" className="input input-bordered w-full" />
-                        <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input input-bordered w-full" />
+                        <input name="name" type="text" defaultValue={user?.displayName} placeholder="Your Name" className="input input-bordered w-full" />
+                        <input name="email" type="email" placeholder="Email Address" className="input input-bordered w-full" />
                         <input name="phone" type="text" placeholder="Phone Number" className="input input-bordered w-full" />
                         <input type="submit" value="Submit" className="btn btn-accent w-full" />
                     </form>
