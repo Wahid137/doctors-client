@@ -11,9 +11,14 @@ const AvailableAppointment = ({ selectedDate }) => {
     const date = format(selectedDate, 'PP')
     const { user } = useContext(AuthContext)
 
+    const query = {
+        date: date,
+        email: user?.email
+    }
+
     const { data: appointmentOptions = [], refetch, isLoading } = useQuery({
-        queryKey: ['appointmentOptions', date, user?.email],
-        queryFn: () => fetch(`http://localhost:5000/appointments?date=${date}&email=${user?.email}`)
+        queryKey: ['appointmentOptions', date],
+        queryFn: () => fetch(`http://localhost:5000/appointments?date=${date}`)
             .then(res => res.json())
     })
 

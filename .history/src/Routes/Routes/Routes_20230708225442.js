@@ -4,9 +4,11 @@ import Main from "../../Layout/Main";
 import Appointment from "../../Pages/Appointment/Appointment/Appointment";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import PrivateRoute from "../PrivateRoutes/PrivateRoute";
 import DashboardLayout from "../../Layout/DashboardLayout";
-import MyAppointment from "../../Pages/Dashboard/MyAppointment/MyAppointment";
+import MyAppintment from "../../Pages/Dashboard/MyAppointment/MyAppintment";
+
 const router = createBrowserRouter([
     {
         path: '/',
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard',
-                element: <MyAppointment></MyAppointment>
+                element: <MyAppintment></My>
             }
         ]
     }

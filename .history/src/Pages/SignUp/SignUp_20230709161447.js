@@ -10,13 +10,11 @@ const SignUp = () => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('');
-    const [token] = useToken(createdUserEmail)
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken[createdUserEmail]
+
     const navigate = useNavigate();
 
-    if (token) {
-        navigate('/');
-    }
 
     const handleSignUp = (data) => {
         setSignUpError('');
@@ -54,7 +52,7 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setCreatedUserEmail(email);
+                setCreatedUserEmail(email)
             })
     }
 

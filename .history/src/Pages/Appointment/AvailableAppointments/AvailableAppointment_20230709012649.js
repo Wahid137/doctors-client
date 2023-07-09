@@ -1,19 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import Loading from '../../../Shared/Loading/Loading';
 import AppointmentOption from './AppointmentOption';
 import BookingModal from '../BookingModal/BookingModal';
-import { AuthContext } from '../../../Context/AuthProvider';
 
 const AvailableAppointment = ({ selectedDate }) => {
     const [treatment, setTreatment] = useState(null)
     const date = format(selectedDate, 'PP')
-    const { user } = useContext(AuthContext)
 
     const { data: appointmentOptions = [], refetch, isLoading } = useQuery({
-        queryKey: ['appointmentOptions', date, user?.email],
-        queryFn: () => fetch(`http://localhost:5000/appointments?date=${date}&email=${user?.email}`)
+        queryKey: ['appointmentOptions', date],
+        queryFn: () => fetch(`http://localhost:5000/appointments?date=${date}`)
             .then(res => res.json())
     })
 

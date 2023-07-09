@@ -4,19 +4,12 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-hot-toast';
-import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('');
-    const [createdUserEmail, setCreatedUserEmail] = useState('');
-    const [token] = useToken(createdUserEmail)
     const navigate = useNavigate();
-
-    if (token) {
-        navigate('/');
-    }
 
     const handleSignUp = (data) => {
         setSignUpError('');
@@ -54,7 +47,8 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setCreatedUserEmail(email);
+                console.log(data)
+                navigate('/')
             })
     }
 

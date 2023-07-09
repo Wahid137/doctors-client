@@ -11,7 +11,7 @@ const SignUp = () => {
     const { createUser, updateUser } = useContext(AuthContext)
     const [signUpError, setSignUpError] = useState('');
     const [createdUserEmail, setCreatedUserEmail] = useState('');
-    const [token] = useToken(createdUserEmail)
+    const [token] = useToken[createdUserEmail]
     const navigate = useNavigate();
 
     if (token) {
@@ -54,7 +54,8 @@ const SignUp = () => {
         })
             .then(res => res.json())
             .then(data => {
-                setCreatedUserEmail(email);
+                if (data.ac)
+                    setCreatedUserEmail(email);
             })
     }
 
