@@ -19,6 +19,7 @@ const Login = () => {
 
     if (token) {
         navigate(from, { replace: true })
+
     }
 
     const handleLogin = data => {
@@ -27,10 +28,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user)
-                setLoginUserEmail(data.email)
                 toast.success("Login Successfully!")
                 reset();
-
+                setLoginUserEmail(data.email)
             })
             .catch(error => {
                 console.log(error)

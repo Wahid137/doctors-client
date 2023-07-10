@@ -20,7 +20,6 @@ const MyAppointment = () => {
             return data;
         }
     })
-
     if (isLoading) {
         return <Loading></Loading>
     }
