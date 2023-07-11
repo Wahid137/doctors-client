@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import Loading from '../../../Shared/Loading/Loading';
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const AddDoctor = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -52,7 +52,7 @@ const AddDoctor = () => {
                         .then(result => {
 
                             toast.success(`${data.name} is added successfully`)
-                            navigate('/dashboard/managedoctor')
+                            Navigate('/dashboard/managedoctors')
                         })
                 }
             })
