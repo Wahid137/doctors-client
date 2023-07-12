@@ -51,7 +51,7 @@ const MyAppointment = () => {
                                 <td>{booking.slot}</td>
                                 <td>
                                     {
-                                        booking.price && !booking.paid && <Link to={`/dashboard/payment/${booking._id}`}>
+                                        booking.price && !booking.paid && <Link to={`dashboard/payment/${booking._id}`}>
                                             <button className='btn btn-primary btn-sm'>Pay</button>
                                         </Link>
                                     }
