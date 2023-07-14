@@ -39,8 +39,8 @@ const AllUsers = () => {
 
     const handleDeleteUser = user => {
         console.log(user)
-        fetch(`http://localhost:5000/users/${user._id}`, {
-            method: 'DELETE',
+        fetch(`http://localhost:5000/doctors/${doctor._id}`, {
+            method: "DELETE",
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
@@ -53,7 +53,6 @@ const AllUsers = () => {
                 }
             })
     }
-
     return (
         <div>
             <h2 className='text-3xl'>All Users</h2>
@@ -74,15 +73,7 @@ const AllUsers = () => {
                                 <th>{i + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>
-                                    {
-                                        user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>
-                                    }
-                                    {
-                                        user?.role === 'admin' && <p className='text-green-500'>Admin</p>
-                                    }
-
-                                </td>
+                                <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}</td>
                                 <td>
                                     <label onClick={() => setDeletingUser(user)} htmlFor="confirmation-modal" className='btn btn-xs btn-danger'>Delete</label>
                                 </td>
@@ -101,7 +92,7 @@ const AllUsers = () => {
                     closeModal={closeModal}// modal vanish
                 ></ConfirmationModal>
             }
-        </div >
+        </div>
     );
 };
 

@@ -75,12 +75,8 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>
-                                    {
-                                        user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>
-                                    }
-                                    {
-                                        user?.role === 'admin' && <p className='text-green-500'>Admin</p>
-                                    }
+                                    {user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)} className='btn btn-xs btn-primary'>Make Admin</button>}
+                                    {user?.role === 'admin' && className='text-green-500'> Admin</button>}
 
                                 </td>
                                 <td>
@@ -88,19 +84,19 @@ const AllUsers = () => {
                                 </td>
                             </tr>)
                         }
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
+        </div>
             {
-                deletingUser && <ConfirmationModal
-                    title={`Are you sure you want to delete?`}//
-                    message={`If you delete ${deletingUser.name} It can not be undone!`}//
-                    successAction={handleDeleteUser} //pass the function
-                    modalData={deletingUser}// jeta delete korbe oitar information pass hoccche modalData diye
-                    successButtonName='Delete'//
-                    closeModal={closeModal}// modal vanish
-                ></ConfirmationModal>
-            }
+        deletingUser && <ConfirmationModal
+            title={`Are you sure you want to delete?`}//
+            message={`If you delete ${deletingUser.name} It can not be undone!`}//
+            successAction={handleDeleteUser} //pass the function
+            modalData={deletingUser}// jeta delete korbe oitar information pass hoccche modalData diye
+            successButtonName='Delete'//
+            closeModal={closeModal}// modal vanish
+        ></ConfirmationModal>
+    }
         </div >
     );
 };
